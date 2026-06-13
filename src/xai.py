@@ -77,7 +77,7 @@ def get_attention_rollout(
     side = int(np.sqrt(mask.size))          # 14
     mask = mask.reshape(side, side)
 
-    mask_img = Image.fromarray((mask / mask.max() * 255).astype(np.uint8)).resize(
+    mask_img = Image.fromarray((mask / (mask.max() + 1e-8) * 255).astype(np.uint8)).resize(
         (224, 224), Image.BILINEAR
     )
     return np.array(mask_img, dtype=np.float32) / 255.0

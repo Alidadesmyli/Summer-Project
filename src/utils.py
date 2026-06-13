@@ -32,7 +32,7 @@ def overlay_heatmap(
     """Blend a (H,W) heatmap over an (H,W,3) image. Returns (H,W,3) uint8."""
     cmap = plt.get_cmap(colormap)
     heat_rgb = (cmap(heatmap)[:, :, :3] * 255).astype(np.uint8)
-    blended = (alpha * heat_rgb + (1 - alpha) * image).astype(np.uint8)
+    blended = (alpha * heat_rgb + (1 - alpha) * image).clip(0, 255).astype(np.uint8)
     return blended
 
 
