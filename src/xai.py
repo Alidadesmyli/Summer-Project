@@ -28,7 +28,7 @@ def get_gradcam_explanation(
         device:       torch device
         use_plusplus: use GradCAM++ instead of GradCAM
     """
-    target_layer = model.features.denseblock4[-1].conv2
+    target_layer = list(model.features.denseblock4.children())[-1].conv2
     tensor = torch.from_numpy(xrv_arr).unsqueeze(0).to(device)  # (1,1,224,224)
     cam_cls = GradCAMPlusPlus if use_plusplus else GradCAM
     with cam_cls(model=model, target_layers=[target_layer]) as cam:
