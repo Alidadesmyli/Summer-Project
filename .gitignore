@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data — never commit raw images or large CSVs
+data/samples/*.jpg
+data/samples/*.png
+data/samples/*.dcm
+data/CheXpert*/
+results/results_full.csv
+
+# Models — too large for git
+*.pt
+*.pth
+*.bin
+*.ckpt
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
